@@ -4,17 +4,17 @@
 # current using relative_url due to jekyll bug, should be absolute_url in production!
 # to just feature parent objects of compound objects, you will want to change the where_exp below to "where_exp: 'item','item.parentid == nil'"
 ---
-{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: 'item', 'item.date' -%}
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: 'item', 'item.date' | where_exp: 'item','item.objectid contains "highlight" '  -%}
 {
     "title": {
         "media": {
-          "url": "{{ site.data.featured_item.src | relative_url }}",
-          "caption": {{ site.data.featured_item.title | jsonify }},
-          "credit": {{ site.title | jsonify }}
+          "url": "https://img.youtube.com/vi/0tsUM5qGgA4/hqdefault.jpg",
+          "caption": "Frame from Maurice Hornocker Interview",
+          "credit": "Jack Kredell"
         },
         "text": {
-          "headline": {{ site.title | append: ' Timeline' | jsonify }},
-          "text": {{ site.description | jsonify }}
+          "headline": "Human Geographies of Taylor",
+          "text": "A series of interviews with individuals who made Taylor what it is today."
         }
     },
     "events": [
