@@ -3,18 +3,29 @@
 layout: page
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
+
 <div class="row">
+  
+  <div class="col-md-12 mb-5">
+    {% include feature/timelinejs.html json="/assets/data/taylor-ds-timeline.json" %}
+
+    <h2>A Sense of Place</h2>
+
+    Watch this mapped excerpt of the Maurice Hornocker interview, where he describes a four day search with fellow researcher Wilbur Wiles, looking for his favorite dog Little Red in cougar country throughout the Taylor Wilderness area.
+
+    {% include feature/video.html objectid="https://youtube.com/watch?v=5FZX3YfoON4" %}
+
+    <a href='/items/hornocker_2.html'>Watch the full video here</a> or <a href='https://earth.google.com/earth/d/12-SnHkcpTIu5pNVLQROautGsJRaknTKw?usp=sharing' target="_blank">explore the space on your own.</a>
+
+    </div>
   <div class="col-md-8">
 
     {% include index/description.html %}
-    {% include index/carousel.html title="Sample Items" %}
     
   </div>
   <div class="col-md-4">  
 
-    {% include index/time.html %}
-
-    {% include index/featured-terms.html field="subject" title="Top Subjects" btn-color="primary" %}
+    {% include index/featured-terms.html field="subject" title="Top Subjects" btn-color="payette-blue" %}
     
     {% include index/objects.html %}
 

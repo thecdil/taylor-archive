@@ -1,8 +1,17 @@
 display_name,stub,dropdown_parent
 Home,/,
-Browse,/browse.html,
-Subjects,/subjects.html,
-Authors,/authors.html,
-Map,/map.html,
-Timeline,/timeline.html,
+About,
+About the Colleciton,/about.html,About
+About the Interviews,/about_interviews.html,About
+Geobiographies,/oral_histories.html
+Bibliometrics,,
+Bibliometrics,/bibliometrics.html,Bibliometrics
+Citation Impact,/citation.html,Bibliometrics
+Co-Authorship,/coauthorship.html,Bibliometrics
+Chronological Keywords,/keywords.html,Bibliometrics
+Browse,
+Collection Item,/browse.html,Browse
+Subjects,/subjects.html,Browse
+Map,/map.html,Browse
+Timeline,/timeline.html,Browse
 Data,/data.html,
