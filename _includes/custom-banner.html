@@ -1,0 +1,26 @@
+{% if page.layout == "taylor-home" %}
+{% include collection-nav.html %}
+<div id="home-banner" class="container-fluid mb-0 p-0">
+    <h1 class="visually-hidden">{{ site.title }}</h1>
+    <div class="w-100 ratio ratio-16x9">
+        <iframe title="" src="https://www.youtube-nocookie.com/embed/eKYyentx7Nc?rel=0&modestbranding=1" allowfullscreen></iframe>
+    </div>
+</div>
+{%- else -%}
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div id="title" class="{% if site.organization-logo-banner %}col-md-9{% else %}col-12{% endif %}">
+            <h1><a class="text-dark font-weight-normal" href="{{ site.baseurl }}/" >{{ site.title }}</a></h1>     
+            {% if site.tagline %}<p>{{ site.tagline }}</p>{% endif %}
+        </div>
+        {% if site.organization-logo-banner %}
+        <div class="col-md-3 d-none d-lg-block text-end">
+            <a class="btn btn-dark" href="{{ site.organization-link }}" title="{{ site.organization-name | escape }} home" target="_blank" rel="noopener">
+                <img class="img-fluid" src="{{ site.organization-logo-banner | relative_url }}" alt="{{ site.organization-name | escape }}" style="max-height:100px">
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% include collection-nav.html %}
+{%- endif -%}

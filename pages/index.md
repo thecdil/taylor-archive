@@ -1,6 +1,5 @@
 ---
-layout: home-infographic
+layout: taylor-home
 title: Home
 permalink: /
 ---
-
