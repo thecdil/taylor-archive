@@ -1,7 +1,7 @@
 ---
-title: About Collection
+title: About Interviews
 layout: about
-permalink: /about.html
+permalink: /about_interviews.html
 # include CollectionBuilder info at bottom
 credits: true
 # Edit the markdown on in this file to describe your collection
