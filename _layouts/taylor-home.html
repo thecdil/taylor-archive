@@ -4,6 +4,8 @@ layout: page
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 
+{% include index/homepage-modal.html button="display-none?" %}
+
 <div class="row">
   
   <div class="col-md-12 mb-5">

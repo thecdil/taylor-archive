@@ -1,0 +1,40 @@
+<style>
+    /* Custom styles for the modal */
+    .modal-content {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Public Sans', sans-serif; /* Use your default font */
+    }
+    .modal-header {
+      border-bottom: none; /* Remove border */
+    }
+    .modal-body {
+      padding: 20px; /* Add padding */
+    }
+  </style>
+  
+  <div class="modal fade" id="developmentModal" tabindex="-1" aria-labelledby="developmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="developmentModalLabel">Please Note:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This site is still in development.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Show the modal when the page is loaded
+    window.addEventListener('DOMContentLoaded', function() {
+      var myModal = new bootstrap.Modal(document.getElementById('developmentModal'));
+      myModal.show();
+    });
+  </script>
+  
