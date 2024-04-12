@@ -1,10 +1,11 @@
 ---
 # Default home page with boxes providing collection stats
 layout: page
+custom-foot: js/youtube-clips-modal.html
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 
-{% include index/homepage-modal.html button="display-none?" %}
+{% include index/homepage-modal.html %}
 
 <div class="row">
   
