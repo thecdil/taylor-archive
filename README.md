@@ -1,15 +1,10 @@
-# digital-collections-template-cb-csv
+# taylor-archive
 
-<https://www.lib.uidaho.edu/digital/>
+<https://www.lib.uidaho.edu/digital/taylor-archive/>
 
-A highly customized version of [CollectionBuilder-CSV](https://github.com/CollectionBuilder/collectionbuilder-csv) used to generate University of Idaho Library Digital Collections.
+Taylor Wilderness Research Station Archive: Voices, Artifacts, and Archives from Taylor
 
-The main branch represents our base collection template.
-Additional branches contain a variety of individual collections with customized metadata and features.
-Updates to the main branch can be merged into the collection branches to maintain the centralized template.
-
-This repository is specifically for building U of I Library projects and trails behind development of the general [CollectionBuilder-CSV](https://github.com/CollectionBuilder/collectionbuilder-csv) template.
-If you are interested in this approach, please visit [CollectionBuilder](https://collectionbuilder.github.io/) to learn more!
+The Taylor Wilderness Research Station Archive features video interviews, archival documents, artifacts, research outputs, and other photographs and ephemera collected from those who have made Taylor the unique and transformative place it's been for over 40 years.
 
 ----------
 
