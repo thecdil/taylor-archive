@@ -1,0 +1,45 @@
+<!-- full screen modal for video-->
+<div class="modal fade" id="videoClipModal" tabindex="-1" aria-labelledby="videoClipModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-body">
+                <div class="w-100 h-100" id="youtubePlayer"></div>
+            </div>
+            <div class="modal-footer">
+                <h1 class="h5 me-4" id="videoClipModalCaption"></h1>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // fullscreen modal parts
+    var videoModal = document.getElementById('videoClipModal');
+    var modalTitle = document.getElementById('videoClipModalCaption');
+    var viewerContainer = document.getElementById('youtubePlayer');
+    // On modal open load item data
+    videoModal.addEventListener('shown.bs.modal', event => {
+        // btn that triggered modal
+        const btnTrigger = event.relatedTarget;
+        // get item objectid
+        //const itemid = btnTrigger.getAttribute('data-bs-objectid');
+        // get item info
+        const itemTitle = btnTrigger.getAttribute('data-bs-caption');
+        const itemYoutubeId = btnTrigger.getAttribute('data-bs-youtubeid');
+        // display item
+        modalTitle.innerHTML = itemTitle;
+        
+        // youtube embed
+        viewerContainer.innerHTML = `<iframe class="h-100 w-100" title="video embed ${itemTitle}" src="https://www.youtube-nocookie.com/embed/${itemYoutubeId}?rel=0&modestbranding=1" allowfullscreen></iframe>`;
+        
+    });
+    // On modal close 
+    videoModal.addEventListener('hide.bs.modal', event => {
+        // remove the viewers on close
+        viewerContainer.innerHTML = "";
+    });
+
+
+</script>
