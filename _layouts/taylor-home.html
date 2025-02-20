@@ -5,20 +5,19 @@ custom-foot: js/taylor-home-js.html
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 
-{% include index/homepage-modal.html %}
-
+<div class="container">
 <div class="row">
   
-  <div class="col-md-12 mb-5">
+  <div class="col-md-12">
     {% include feature/timelinejs.html json="/assets/data/taylor-ds-timeline.json" %}
 
-    <h2>A Sense of Place</h2>
+    <h2 class="mt-5">A Sense of Place</h2>
 
-    <p>Watch this mapped excerpt of the Maurice Hornocker interview, where he describes a four day search with fellow researcher Wilbur Wiles, looking for his favorite dog Little Red in cougar country throughout the Frank Church River of No Return Wilderness that surrounds the Taylor Wilderness Research Station.</p>
+    <p class="col-md-8">In this the mapped interview excerpt below, biologist Maurice Hornocker recounts his four-day search with colleague Wilbur Wiles for Wilbur's dog Little Red in the cougar country of Idaho's Frank Church Wilderness, surrounding Taylor Wilderness Research Station.</p>
 
     {% include feature/video.html objectid="https://www.youtube.com/watch?v=EEFYBcwY4Bg" %}
 
-    <a href='/items/hornocker_2.html'>Watch the full video</a> or <a href='https://earth.google.com/earth/d/12-SnHkcpTIu5pNVLQROautGsJRaknTKw?usp=sharing' target="_blank" rel="noopener">explore the space on Google Earth</a>.
+   <p class="my-4 h5 text-end"> <a class="btn btn-lg btn-outline-info me-4" href='/items/hornocker_2.html'>Watch the full video</a>  <a class="btn btn-lg btn-outline-primary" href='https://earth.google.com/earth/d/12-SnHkcpTIu5pNVLQROautGsJRaknTKw?usp=sharing' target="_blank" rel="noopener">Explore the space on Google Earth</a>.</p>
 
     </div>
   <div class="col-md-8">
@@ -39,4 +38,5 @@ custom-foot: js/taylor-home-js.html
 
   </div>
 
+</div>
 </div>

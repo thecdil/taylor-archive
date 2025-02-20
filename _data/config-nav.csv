@@ -1,17 +1,10 @@
 display_name,stub,dropdown_parent
-Taylor Wilderness Research Station Archive,/,
-About,
-About the Collection,/about.html,About
-About the Interviews,/about_interviews.html,About
-Oral Histories,/oral_histories.html
-Bibliometrics,,
-Bibliometrics,/bibliometrics.html,Bibliometrics
-Citation Impact,/citation.html,Bibliometrics
-Co-Authorship,/coauthorship.html,Bibliometrics
-Chronological Keywords,/keywords.html,Bibliometrics
-Browse,
-Collection Items,/browse.html,Browse
-Subjects,/subjects.html,Browse
-Map,/map.html,Browse
-Timeline,/timeline.html,Browse
-Data,/data.html,
+Voices,/oral_histories/
+Research,/bibliometrics.html
+Artifacts & Archives,,
+Collection Items,/browse.html,Artifacts & Archives
+Subjects,/subjects.html,Artifacts & Archives
+Map,/map.html,Artifacts & Archives
+Timeline,/timeline.html,Artifacts & Archives
+Data,/data.html,Artifacts & Archives
+About,/about.html
