@@ -21,8 +21,9 @@
                     <div class="col-md-4">
                         <p>
                         {% if slide.link %}
+                        {% if slide.link contains "<a " %}{{ slide.link}}{% else %}
                         <a class="btn btn-outline-pride-gold" href="{{ slide.link | relative_url }}">{{ slide.link-text }}</a>
-                        {% endif %}
+                        {% endif %}{% endif %}
                         {% if slide.link2 %}
                         <a class="btn btn-outline-clearwater me-2 mt-md-2 mt-sm-0" href="{{ slide.link2 | relative_url }}">{{ slide.link2-text }}</a>{% endif %}
                         </p>
