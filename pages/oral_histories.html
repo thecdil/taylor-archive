@@ -7,13 +7,19 @@ permalink: /oral_histories/
 {% assign interviewees = site.data.interviewees %}
 
 <div class="row">
-<div class="col-md-6 ps-2">
     <h2>{{page.title}}</h2>
-<p class="names">This collection consists of 11 hour-long video interviews with the following people: 
-{% for int in interviewees %}{% if forloop.last %}and <a href="#{{ int.interviewee | slugify}}">{{ int.interviewee }}</a> {% if int.location %} ({{int.location}}){% endif %} {% else %}<a href="#{{ int.interviewee | slugify}}">{{ int.interviewee }}</a>{% if int.location %} ({{int.location}}){% endif %}, {% endif %}{% endfor %}conducted between summer of 2022 and spring of 2023.</p>
+<div class="col-md-6 ps-2">
+    
+<p class="names">This collection consists of 11 hour-long video interviews conducted between summer of 2022 and spring of 2023 with the following people: </p>
+    <ul>
+    {% for int in interviewees %}
+        <li><a href="#{{ int.interviewee | slugify}}">{{ int.interviewee }}</a> {% if int.location %} ({{int.location}}){% endif %}
+        </li>
+    {% endfor %}
+</ul>
 </div>
 <div class="col-md-6 px-2 text-center">
-{% include transcript/index/viz-overview.html height="250px"%}
+{% include transcript/index/viz-overview.html height="350px"%}
 
 {% include feature/button.html centered="true" text="Visualize by Topic" link="visualization.html" color="primary btn-lg" %}
 
