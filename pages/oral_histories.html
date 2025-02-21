@@ -11,12 +11,11 @@ permalink: /oral_histories/
 <div class="col-md-6 ps-2">
     
 <p class="names">This collection consists of 11 hour-long video interviews conducted between summer of 2022 and spring of 2023 with the following people: </p>
-    <ul>
+ 
     {% for int in interviewees %}
-        <li><a href="#{{ int.interviewee | slugify}}">{{ int.interviewee }}</a> {% if int.location %} ({{int.location}}){% endif %}
-        </li>
+       <a class="btn btn-outline-info m-2" href="#{{ int.interviewee | slugify}}">{{ int.interviewee }}</a>    
     {% endfor %}
-</ul>
+
 </div>
 <div class="col-md-6 px-2 text-center">
 {% include transcript/index/viz-overview.html height="350px"%}

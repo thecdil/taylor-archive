@@ -1,7 +1,5 @@
 display_name,stub,dropdown_parent
-Voices,
-Oral Histories,/oral_histories/,Voices
-Visualize by Topic,/oral_histories/visualization.html,Voices
+Voices,/oral_histories/,
 Research,
 Bibliometrics,/bibliometrics.html,Research
 Citation Impact,/citation.html,Research
