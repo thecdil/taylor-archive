@@ -155,20 +155,28 @@
 
 
   function scrollToLine(x) {
-    {% if site.data.theme.media-scroll == true %} upperElement.classList.add("media-scroll-wrapper"); {% endif %}
+    {% if site.data.theme.media-scroll == true %} 
+    upperElement.classList.add("media-scroll-wrapper"); 
+    {% endif %}
+    
     var targetElement = document.getElementById(x);
     if (targetElement) {
       targetElement.classList.add("border-featured");
+      // Set tabindex to make element focusable
+      targetElement.setAttribute('tabindex', '0');
+      // Smoothly scroll to the element
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center' // Changed from 'start' to 'center'
+      });
+      // Focus on the element after scroll
+      targetElement.focus();
     }
-    // Smoothly scroll to the element
-    targetElement.scrollIntoView({
-      behavior: 'smooth',  // Enables smooth scrolling
-      block: 'start'       // Aligns to the top of the viewport
-    });
-      // if filters are not retracted, wait 300ms then retract them after scrolling function activated
-      if (!filtersSearch.classList.contains("retracted")) { 
-        setTimeout(function () { filtersSearch.classList.add("retracted"); }, 300); 
-      }
+  
+    // if filters are not retracted, wait 300ms then retract them after scrolling function activated
+    if (!filtersSearch.classList.contains("retracted")) { 
+      setTimeout(function () { filtersSearch.classList.add("retracted"); }, 300); 
+    }
   }
 
 
