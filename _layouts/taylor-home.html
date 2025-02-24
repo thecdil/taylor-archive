@@ -5,41 +5,21 @@ custom-foot: js/taylor-home-js.html;
 ---
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 
-<div class="container">
 <div class="row">
-  
-  <div class="col-md-12">
-    {% include feature/timelinejs.html json="/assets/data/taylor-ds-timeline.json" %}
-
-    <h2 class="mt-5">A Sense of Place</h2>
-
-    <p class="col-md-8">In this the mapped interview excerpt below, biologist Maurice Hornocker recounts his four-day search with colleague Wilbur Wiles for Wilbur's dog Little Red in the cougar country of Idaho's Frank Church Wilderness, surrounding Taylor Wilderness Research Station.</p>
-
-    {% include feature/video.html objectid="https://www.youtube.com/watch?v=EEFYBcwY4Bg" %}
-
-   <p class="my-4 h5 text-end"> <a class="btn btn-lg btn-outline-info me-4" href='/items/hornocker_2.html'>Watch the full video</a>  <a class="btn btn-lg btn-outline-primary" href='https://earth.google.com/earth/d/1iug1YQg_rw2eoxaJmfKjzvsWF8cOeIV6?usp=sharing' target="_blank" rel="noopener">Explore the space on Google Earth</a>.</p>
-
-    </div>
   <div class="col-md-4">
-
     {% include index/description.html %}
-    
   </div>
-  <div class="col-md-4">  
-
+  <div class="col-md-4">
     {% include index/featured-terms.html field="subject" title="Top Subjects" btn-color="payette-blue" %}
-    
   </div>
-  <div class="col-md-4">  
-    
+  <div class="col-md-4">
     {% include index/objects.html %}
-
   </div>
-  <div class="col-md-12">
+</div>
 
+<div class="row">
+  <div class="col-12">
     {% include index/data-download.html %}
-
   </div>
+</div>
 
-</div>
-</div>
