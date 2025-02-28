@@ -2,39 +2,29 @@
 title: Bibliometrics
 layout: page
 permalink: /bibliometrics.html
-# include CollectionBuilder info at bottom
-#credits: true
-# Edit the markdown on in this file to describe your collection
-# Look in _includes/feature for options to easily add features to the page
 ---
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-md-4 col-12">
         <h2>Bibliometrics</h2>
-        <p><b>Bibliometrics are the use of statistical methods to analyze books, articles and other publications, especially in scientific contents.</b></p>
-        <p> The following visualizations were created from authors who contributed to our Taylor Archive Digital
-            Collection, dating back to 1970. Author names were standardized and searched in <a
-                href="https://www.webofscience.com">Web of Science</a>, where their scholarly contributions were
-            compiled.</p>
-        <p>The data was then visualized in <a href="https://www.vosviewer.com">VOSViewer</a> to understand the scholarly
-            impact of work that has been influenced by and the product of the Taylor Wilderness Research Station
-            according to <a href="citation.html">future citations of that work</a>, <a
-                href="coauthorship.html">co-authorship of papers</a>, and <a href="keywords.html">fields of interest
-                over time</a>.</p>
+        <p><b>Bibliometrics are the use of statistical methods to analyze books, articles, and other publications, especially in scientific contexts.</b></p>
+        <p>The following visualizations were created from authors who contributed to our Taylor Archive Digital Collection, dating back to 1970. Author names were standardized and searched in <a href="https://www.webofscience.com">Web of Science</a>, where their scholarly contributions were compiled.</p>
+        <p>The data was then visualized in <a href="https://www.vosviewer.com">VOSViewer</a> to understand the scholarly impact of work that has been influenced by and the product of the Taylor Wilderness Research Station according to <a href="citation.html">future citations of that work</a>, <a href="coauthorship.html">co-authorship of papers</a>, and <a href="keywords.html">fields of interest over time</a>.</p>
     </div>
-    <div class="col-8">
-        <div class="image-container">
-            {% include feature/image.html objectid="/objects/small/citation_shot_sm.jpg" width="75" alt="Data Visualization of Citations" link="citation.html" %}
 
+    <div class="col-md-8 col-12">
+        <div class="image-container">
+            {% include feature/image.html objectid="/objects/small/citation_shot_sm.jpg" width="100" alt="Data Visualization of Citations" link="citation.html" %}
             {% include feature/button.html text="Citation Impact <br><small>(click to explore)</small>" link='citation.html' color="primary" size="lg" centered="true"%}
         </div>
+
         <div class="image-container">
-            {% include feature/image.html objectid="/objects/small/coauthor_shot_sm.jpg" width="75" alt="Data visualization of co-authored scholarly papers" link="coauthorship.html" %}
-                    {% include feature/button.html text="Co-authorship <br><small>(click to explore)</small>" link='coauthorship.html' color="primary" size="lg" centered="true"%}
+            {% include feature/image.html objectid="/objects/small/coauthor_shot_sm.jpg" width="100" alt="Data visualization of co-authored scholarly papers" link="coauthorship.html" %}
+            {% include feature/button.html text="Co-authorship <br><small>(click to explore)</small>" link='coauthorship.html' color="primary" size="lg" centered="true"%}
         </div>
+
         <div class="image-container">
-           {% include feature/image.html objectid="/objects/small/keyword_shot_sm.jpg" width="75" alt="Data visualization of keyword trends over time" link="keywords.html"%}
-          
+            {% include feature/image.html objectid="/objects/small/keyword_shot_sm.jpg" width="100" alt="Data visualization of keyword trends over time" link="keywords.html"%}
             {% include feature/button.html text="Chronological Keywords <br><small>(click to explore)</small>" link='keywords.html' color="primary" size="lg" centered="true"%}
         </div>
     </div>
