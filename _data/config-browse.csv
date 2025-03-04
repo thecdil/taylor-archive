@@ -1,7 +1,7 @@
-field,display_name,btn,hidden,sort_name
-date,Date,,,Date
-creator,Creator,,,Creator
-description,,,true,
+field,display_name,btn,hidden,sort_name,facet_name
+date,Date,,,Date,Date
+creator,Creator,,,Creator,Creator
+description,,,true,,Description
 subject,,true
-location,,true
+item_type,Item Type,true,,Item Type
 identifier,,,true,Identifier
