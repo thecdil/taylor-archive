@@ -245,7 +245,6 @@ function filterItems(arr, q, field="all") {
     
     loadingIcon.classList.add("d-none");
 }
-
 /**
  * Process the basic search form and execute search
  * Uses simple direct URL manipulation to maintain compatibility with links
@@ -461,7 +460,7 @@ function addSearchRow(values = {}) {
  * @param {Event} event - Optional event object if triggered by a form submit
  * @return {boolean} False to prevent default form submission
  */
-function submitAdvancedSearch(event) {
+ function submitAdvancedSearch(event) {
     // Prevent default if this was from a form submit
     if (event && event.preventDefault) {
         event.preventDefault();
@@ -483,6 +482,12 @@ function submitAdvancedSearch(event) {
             searchParams[`v${index}`] = value;
         }
     });
+    
+    // Add current sort option to the URL parameters
+    const activeSort = document.querySelector(".browse-sort-item.active");
+    if (activeSort) {
+        searchParams['sort'] = activeSort.dataset.filter;
+    }
     
     // Create URL parameters
     const queryString = new URLSearchParams();
@@ -576,7 +581,6 @@ if (matchingDropdownItem) {
 
     shuffle(items);
 {% endif %}
-
 /* Add sort function on click of sort options */
 var sortFilter = document.querySelector("#sortFilter");
 var sortOptions = document.querySelectorAll(".browse-sort-item");
@@ -605,8 +609,26 @@ sortOptions.forEach((button) => {
       index++;
     }
     
-    // If we have active advanced search criteria
+    // If we have active advanced search criteria, update the URL with new sort parameter
     if (searchCriteria.length > 0) {
+      // Create new URL with updated sort parameter
+      const newParams = new URLSearchParams();
+      
+      // Copy existing search parameters
+      for (let i = 0; i < searchCriteria.length; i++) {
+        newParams.set(`b${i}`, searchCriteria[i].boolean);
+        newParams.set(`f${i}`, searchCriteria[i].field);
+        newParams.set(`v${i}`, searchCriteria[i].value);
+      }
+      
+      // Set the sort parameter
+      newParams.set('sort', field);
+      
+      // Update the URL without reloading the page
+      const newUrl = window.location.pathname + '?' + newParams.toString();
+      window.history.pushState({}, '', newUrl);
+      
+      // Apply the sort and filter
       if (field != 'random') {
         sorting(items, field);
         advancedFilterItems(items, searchCriteria);
@@ -644,6 +666,28 @@ document.querySelector("#fieldSelect").addEventListener("change", function(e) {
  window.addEventListener('load', function() {
     // Initialize search state based on URL
     const urlParams = new URLSearchParams(window.location.search);
+    
+    // Handle sort parameter from URL if present
+    if (urlParams.has('sort')) {
+        const sortValue = urlParams.get('sort');
+        const sortOptions = document.querySelectorAll('.browse-sort-item');
+        
+        // Update sort UI to match URL parameter
+        sortOptions.forEach((option) => {
+            option.classList.remove('active');
+            if (option.dataset.filter === sortValue) {
+                option.classList.add('active');
+                document.getElementById('sortFilter').innerHTML = option.textContent;
+                
+                // Apply the sort if it's not random
+                if (sortValue !== 'random') {
+                    sorting(items, sortValue);
+                } else {
+                    shuffle(items);
+                }
+            }
+        });
+    }
     
     // If we have URL search parameters, handle advanced search
     if (urlParams.toString()) {
