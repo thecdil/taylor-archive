@@ -3,5 +3,6 @@ date,Date,,,Date,Date
 creator,Creator,,,Creator,Creator
 description,,,true,,Description
 subject,,true
-item_type,Item Type,true,,Item Type
+item_type,Resource Type,true,,Resource Type
 identifier,,,true,Identifier
+display_template,Item Type,,true,,Item Type

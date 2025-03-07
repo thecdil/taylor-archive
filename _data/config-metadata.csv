@@ -10,6 +10,10 @@ latitude,Latitude,,,,
 longitude,Longitude,,,,
 source,Source,,,,
 identifier,Source Identifier,,,,
+item_type,Resource Type,,,,
 type,Type,,,DCTERMS.type,
 format,Format,,,,encodingFormat
 rightsstatement,,,,DCTERMS.rights,license
+
+
+objectid,parentid,filename,title,creator,interviewee,description,bio,full-bio,date,archival date,subject,location,latitude,longitude,relationship,source,donor,identifier,rights,standardized rights,item_type,format original,type,format,display_template,object_location,image_small,image_thumb,object_transcript,language
