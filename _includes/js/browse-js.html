@@ -92,7 +92,7 @@ function makeCard(obj) {
     // media type
     if(obj.template && obj.template != "") {
         mediaIcon = getIcon(obj.template,obj.format,"hidden");
-        card += '<p class="card-text"><small><a class="btn btn-sm btn-outline-secondary" href="{{ page.url | relative_url }}#' + encodeURIComponent(obj.template) + '">' + 
+        card += '<p class="card-text"><small><a class="btn btn-sm btn-outline-secondary" href="{{ page.url | relative_url }}#display_template:' + encodeURIComponent(obj.template) + '">' + 
         obj.template.toUpperCase().replace("_"," ") + ' ' + mediaIcon + '</a></small></p>';
     }
     // view button
@@ -300,7 +300,7 @@ function resetFilter() {
  * Create a list of valid field names from the configuration
  * Used to validate field names in hash-based searches
  */
-const validFields = [{% for f in fields %}"{{ f.field }}",{% endfor %}"title"];
+const validFields = [{% for f in fields %}"{{ f.field }}",{% endfor %}"title","display_template"];
 /**
  * Handle changes to the hash portion of the URL
  * This is triggered by both manual URL changes and links with hash targets
