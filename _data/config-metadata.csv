@@ -10,7 +10,7 @@ latitude,Latitude,,,,
 longitude,Longitude,,,,
 source,Source,,,,
 identifier,Source Identifier,,,,
-item_type,Resource Type,,,,
+item_type,Resource Type,true,,,
 type,Type,,,DCTERMS.type,
 format,Format,,,,encodingFormat
 rightsstatement,,,,DCTERMS.rights,license
