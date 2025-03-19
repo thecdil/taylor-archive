@@ -1,6 +1,6 @@
 <style>
    {% if page.layout == 'taylor-home' %} .taylor-navbar-light {
-    background: rgba(0, 0, 0, 0.1) !important;
+    background: rgba(0, 0, 0, 0.45) !important;
     position: absolute;
     top: 0px;
     left: 0;
@@ -22,9 +22,9 @@
         </div>
         
         <div class="col-md-3 d-none d-lg-block text-center mt-2">
-            {% unless page.layout == 'taylor-home' %}<a class="btn btn-dark" href="{{ site.organization-link }}" title="{{ site.organization-name | escape }} home" target="_blank" rel="noopener">
+            <a class="btn btn-dark" href="{{ site.organization-link }}" title="{{ site.organization-name | escape }} home" target="_blank" rel="noopener">
                 <img class="img-fluid" src="{{ site.organization-logo-banner | relative_url }}" alt="{{ site.organization-name | escape }}" style="max-height:50px">
-            </a>{% endunless %}
+            </a>
         </div>
     </div> 
     </div> 

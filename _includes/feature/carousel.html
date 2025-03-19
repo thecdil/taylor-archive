@@ -9,7 +9,7 @@
         
         {% for slide in include.slides %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img {% unless forloop.first %}class="lazyload" data-{% endunless %}src="{% unless slide.image-src contains 'http' %}{{ site.liburl }}{% endunless %}{{ slide.image-src }}" alt="{{ slide.image-alt }}">
+            <img {% unless forloop.first %}class="lazyload" data-{% endunless %}src="{% unless slide.image-src contains 'http' %}{{ site.liburl }}{% endunless %}{{ slide.image-src }}" alt="{{ slide.image-alt }}" style="{{ slide.style }}">
             <div class="carousel-caption d-none d-md-block px-3 mb-3">
                 <div class="row">
                     <div class="col-12">
@@ -22,7 +22,7 @@
                         <p>
                         {% if slide.link %}
                         {% if slide.link contains "<a " %}{{ slide.link}}{% else %}
-                        <a class="btn btn-outline-pride-gold" href="{{ slide.link | relative_url }}">{{ slide.link-text }}</a>
+                        <a class="btn btn-lg btn-outline-pride-gold" href="{{ slide.link | relative_url }}">{{ slide.link-text }}</a>
                         {% endif %}{% endif %}
                         {% if slide.link2 %}
                         <a class="btn btn-outline-clearwater me-2 mt-md-2 mt-sm-0" href="{{ slide.link2 | relative_url }}">{{ slide.link2-text }}</a>{% endif %}
@@ -39,7 +39,8 @@
                         <div class="col-md-12">
                             <p class="text-center">
                             {% if slide.link %}
-                            <a class="btn btn-outline-pride-gold" href="{{ slide.link }}">{{ slide.link-text }}</a>{% endif %}
+                            {% if slide.link contains "<a " %}{{ slide.link}}{% else %}
+                            <a class="btn btn-lg btn-outline-pride-gold" href="{{ slide.link }}">{{ slide.link-text }}</a>{% endif %}{% endif %}
                             {% if slide.link2 %}
                             <a class="btn btn-outline-clearwater me-2 mt-md-2 mt-sm-0" href="{{ slide.link2 }}">{{ slide.link2-text }}</a>{% endif %}
                             </p>

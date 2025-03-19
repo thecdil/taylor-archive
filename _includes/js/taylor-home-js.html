@@ -14,32 +14,58 @@
 </div>
 
 <script>
-
+    // Load YouTube API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    var player;
+    
     // fullscreen modal parts
     var videoModal = document.getElementById('videoClipModal');
     var modalTitle = document.getElementById('videoClipModalCaption');
     var viewerContainer = document.getElementById('youtubePlayer');
+    
     // On modal open load item data
     videoModal.addEventListener('shown.bs.modal', event => {
         // btn that triggered modal
         const btnTrigger = event.relatedTarget;
-        // get item objectid
-        //const itemid = btnTrigger.getAttribute('data-bs-objectid');
         // get item info
         const itemTitle = btnTrigger.getAttribute('data-bs-caption');
         const itemYoutubeId = btnTrigger.getAttribute('data-bs-youtubeid');
         // display item
         modalTitle.innerHTML = itemTitle;
         
-        // youtube embed
-        viewerContainer.innerHTML = `<iframe class="h-100 w-100" title="video embed ${itemTitle}" src="https://www.youtube-nocookie.com/embed/${itemYoutubeId}?rel=0&modestbranding=1" allowfullscreen></iframe>`;
+        // Create YouTube player
+        viewerContainer.innerHTML = `<div id="youtubeIframe" class="h-100 w-100"></div>`;
         
+        player = new YT.Player('youtubeIframe', {
+            height: '100%',
+            width: '100%',
+            videoId: itemYoutubeId,
+            playerVars: {
+                'rel': 0,
+                'modestbranding': 1
+            },
+            events: {
+                'onReady': function(event) {
+                    // Start playing after 250ms (quarter second)
+                    setTimeout(() => {
+                        event.target.playVideo();
+                    }, 250);
+                }
+            }
+        });
     });
+    
     // On modal close 
     videoModal.addEventListener('hide.bs.modal', event => {
-        // remove the viewers on close
+        // Stop and destroy the player
+        if (player && player.stopVideo) {
+            player.stopVideo();
+        }
         viewerContainer.innerHTML = "";
+        player = null;
     });
-
-
 </script>
