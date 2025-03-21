@@ -4,6 +4,7 @@ creator,Creator,,,DCTERMS.creator,creator
 archival date,Date Created
 date,,,,DCTERMS.date,dateCreated
 description,Description,,,DCTERMS.description,description
+summary,Summary,,,,
 subject,Subjects,true,,DCTERMS.subject,keywords
 location,Location,,,,contentLocation
 latitude,Latitude,,,,
