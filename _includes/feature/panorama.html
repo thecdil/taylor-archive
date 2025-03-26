@@ -1,0 +1,24 @@
+
+{% assign pano_object = site.data[site.metadata] | where_exp: 'item', 'include.objectid == item.objectid' | first %}
+
+{% capture pano %}{{pano_object.object_location | relative_url}}{% endcapture %}
+{% capture height %}{% if include.height %}%}{{ include.height }}{% else %}400px{% endif %}{% endcapture %}
+{% capture width %}{% if include.width %}{{ include.width }}{% else %}100%{% endif %}{% endcapture %}
+
+<div id="panorama-{{include.objectid}}" class="panorama my-5 mx-auto" style="height:{{ height }}; width: {{ width }};"></div>
+
+<!-- https://pannellum.org/documentation/reference/ -->
+<script>
+pannellum.viewer('panorama-{{include.objectid}}', {
+    "type": "equirectangular",
+    "panorama": "{{ pano }}",
+    "autoLoad": false
+        /*
+     * Uncomment the next line to print the coordinates of mouse clicks
+     * to the browser's developer console, which makes it much easier
+     * to figure out where to place hot spots. Always remove it when
+     * finished, though.
+     */
+    
+});
+</script>
