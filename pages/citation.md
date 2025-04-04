@@ -1,6 +1,6 @@
 ---
 title: Citation Impact
-layout: about
+layout: page-narrow
 permalink: /citation.html
 # include CollectionBuilder info at bottom
 #credits: true

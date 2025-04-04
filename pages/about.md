@@ -69,7 +69,7 @@ The visualizations created for this archive help reveal patterns and connections
 
 Funding for this project was graciously provided by The College of Natural Resources and the University of Idaho Library. 
 
-Thanks especially to 
+Special thanks to the following individuals: 
 
 - CNR Dean Dennis Becker 
 - Library Dean Ben Hunter

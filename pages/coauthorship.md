@@ -1,6 +1,6 @@
 ---
 title: Co-Authorship
-layout: about
+layout: page-narrow
 permalink: /coauthorship.html
 # include CollectionBuilder info at bottom
 #credits: true
