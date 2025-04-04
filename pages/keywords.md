@@ -1,6 +1,6 @@
 ---
 title: Chronological Keywords
-layout: about
+layout: page-narrow
 permalink: /keywords.html
 # include CollectionBuilder info at bottom
 #credits: true
