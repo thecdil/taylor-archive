@@ -73,4 +73,4 @@ Special thanks to the following individuals:
 
 - CNR Dean Dennis Becker 
 - Library Dean Ben Hunter
-- Janet Devlieg Pope 
+- Janet DeVlieg Pope
