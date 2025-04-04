@@ -6,6 +6,7 @@ custom-foot: js/taylor-home-js.html;
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 
 <div class="row">
+  {{ content}}
   <div class="col-md-4">
     {% include index/description.html %}
   </div>
