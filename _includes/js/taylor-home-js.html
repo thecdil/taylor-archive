@@ -34,8 +34,34 @@
         // get item info
         const itemTitle = btnTrigger.getAttribute('data-bs-caption');
         const itemYoutubeId = btnTrigger.getAttribute('data-bs-youtubeid');
+        var modalButtonLink = btnTrigger.getAttribute('data-modal-button-link');
+        var modalButtonText = btnTrigger.getAttribute('data-modal-button-text');
+
+
         // display item
         modalTitle.innerHTML = itemTitle;
+        
+        // Update footer buttons based on available attributes
+        const modalFooter = document.querySelector('#videoClipModal .modal-footer');
+        
+        // First, remove any previously added link button (if exists)
+        const existingLinkBtn = modalFooter.querySelector('.modal-link-btn');
+        if (existingLinkBtn) {
+            existingLinkBtn.remove();
+        }
+        
+        // Add link button if both link and text values exist
+        if (modalButtonLink && modalButtonText) {
+            const linkBtn = document.createElement('a');
+            linkBtn.href = modalButtonLink;
+            linkBtn.className = 'btn btn-sm btn-secondary modal-link-btn me-2';
+            linkBtn.textContent = modalButtonText;
+            linkBtn.target = '_blank'; // Open in new tab
+            
+            // Insert before the Close button
+            const closeBtn = modalFooter.querySelector('[data-bs-dismiss="modal"]');
+            modalFooter.insertBefore(linkBtn, closeBtn);
+        }
         
         // Create YouTube player
         viewerContainer.innerHTML = `<div id="youtubeIframe" class="h-100 w-100"></div>`;
