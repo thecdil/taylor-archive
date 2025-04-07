@@ -22,6 +22,9 @@ padding: 4em
 
 The Taylor Wilderness Research Station Archive preserves and shares over 40 years of wilderness research, stories, and experiences through a rich collection of digital materials. This archive features video interviews, archival documents, artifacts, research outputs, photographs, and ephemera collected from those who have made Taylor the unique and transformative place it has been for decades.
 
+
+{% include feature/button.html text="Read an in-depth History of Taylor Here" link="taylor-history.html" color="primary btn-lg" %}
+
 ## The Collection
 
 The Taylor Archive contains a diverse range of materials that tell multifaceted stories about this special place:
@@ -32,8 +35,6 @@ The Taylor Archive contains a diverse range of materials that tell multifaceted 
 - **Data:** Research datasets and visualizations revealing patterns and trends
 
 Located in the Frank Church River of No Return Wilderness in central Idaho, the Taylor Wilderness Research Station provides unique research opportunities in watersheds, wildlife, vegetation, weather, climate, and history. Surrounded by 2.3 million acres of wilderness, this remote location allows for studying areas with minimal human impact.
-
-{% include feature/button.html text="Read an in-depth History of Taylor Here" link="taylor-history.html" color="primary btn-lg" %}
 
 ## Project Development
 
