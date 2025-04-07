@@ -25,6 +25,8 @@ The Taylor Wilderness Research Station Archive preserves and shares over 40 year
 
 {% include feature/button.html text="Read an in-depth History of Taylor Here" link="taylor-history.html" color="primary btn-lg" %}
 
+{% include feature/image.html objectid="twrs213" caption="Taylor caretaker Arlow Lewis (far left with glasses) pictured with student researchers (at the time), including Jim (kneeling with dog) and Carol Bennett." %}
+
 ## The Collection
 
 The Taylor Archive contains a diverse range of materials that tell multifaceted stories about this special place:
