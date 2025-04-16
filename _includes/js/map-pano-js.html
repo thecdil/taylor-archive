@@ -3,7 +3,7 @@
 {% else %}
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
 {% endif %}
-{%- assign items = items | where_exp: 'item','item.latitude != nil and item.longitude != nil'| where_exp: 'item', 'item.display_template == "panorama"' -%}
+{%- assign items = items | where_exp: 'item','item.latitude != nil and item.longitude != nil'| where_exp: 'item', 'item.display_template == "panorama" or item.subject contains "tour photo"' -%}
 {%- assign fields = site.data.config-map -%}
 <!-- load leaflet dependencies -->
 <script src="{{ '/leaflet/leaflet.js' | prepend: site.digital-assets }}"></script>
