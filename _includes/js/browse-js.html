@@ -156,6 +156,20 @@ function filterItems(arr, q, field="all") {
     if (q != "") {
         filterTextBox.focus();
     }
+    
+    // Display active filter indicators for facet searches too
+    if (q && q !== "") {
+        const searchCriteria = [{
+            boolean: 'AND',
+            field: field,
+            value: q
+        }];
+        displayActiveFilters(searchCriteria);
+    } else {
+        // Clear active filter indicators for empty searches
+        displayActiveFilters([]);
+    }
+    
     loadingIcon.classList.add("d-none");
 };
 
@@ -243,6 +257,9 @@ function filterItems(arr, q, field="all") {
     }
     browseItemsDiv.innerHTML = cards;
     
+    // Display active filter indicators
+    displayActiveFilters(searchCriteria);
+    
     loadingIcon.classList.add("d-none");
 }
 /**
@@ -292,6 +309,10 @@ function resetFilter() {
     
     // Show all items
     filterItems(items, "", "all");
+    
+    // Clear active filter indicators
+    displayActiveFilters([]);
+    
     return false;
 }
 
@@ -801,8 +822,188 @@ document.getElementById('fieldSelect').addEventListener('change', function(e) {
         // Show the advanced search modal
         new bootstrap.Modal(document.getElementById('advancedSearchModal')).show();
     }
+    
+    // Update mobile button text
+    const selectedField = document.getElementById('selectedField');
+    if (selectedField) {
+        selectedField.textContent = e.target.options[e.target.selectedIndex].text;
+    }
+});
+
+// Handle mobile dropdown clicks
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.dropdown-item[data-field]')) {
+        const field = e.target.getAttribute('data-field');
+        const fieldSelect = document.getElementById('fieldSelect');
+        const selectedField = document.getElementById('selectedField');
+        
+        if (field === 'advanced') {
+            // Show advanced search modal
+            new bootstrap.Modal(document.getElementById('advancedSearchModal')).show();
+            return;
+        }
+        
+        // Update the hidden select and mobile button text
+        if (fieldSelect) {
+            fieldSelect.value = field;
+            // Trigger change event
+            fieldSelect.dispatchEvent(new Event('change'));
+        }
+        
+        if (selectedField) {
+            selectedField.textContent = e.target.textContent;
+        }
+    }
 });
 
 // Event listener for hash changes
 window.addEventListener("hashchange", handleHashChange);
+
+/**
+ * Display active filter indicators below the search box
+ * Shows small buttons for each active advanced search filter
+ * 
+ * @param {Array} searchCriteria - Array of active search criteria
+ */
+function displayActiveFilters(searchCriteria) {
+    const activeFiltersDiv = document.getElementById('activeFilters');
+    if (!activeFiltersDiv) return;
+    
+    // Clear existing filters
+    activeFiltersDiv.innerHTML = '';
+    
+    if (!searchCriteria || searchCriteria.length === 0) {
+        return;
+    }
+    
+    // Create a container for the filter buttons and add field button
+    const filtersContainer = document.createElement('div');
+    filtersContainer.className = 'd-flex flex-wrap align-items-center';
+    
+    searchCriteria.forEach((criteria, index) => {
+        if (!criteria.value) return;
+        
+        const filterButton = document.createElement('button');
+        
+        // Set button color based on boolean operator
+        let buttonClass = 'btn btn-sm btn-outline-success me-2 mb-1'; // Default for AND
+        if (criteria.boolean === 'NOT') {
+            buttonClass = 'btn btn-sm btn-outline-danger me-2 mb-1';
+        } else if (criteria.boolean === 'OR') {
+            buttonClass = 'btn btn-sm btn-outline-warning me-2 mb-1';
+        }
+        
+        filterButton.className = buttonClass;
+        filterButton.type = 'button';
+        filterButton.setAttribute('data-filter-index', index);
+        
+        // Get field display name with better facet field handling
+        let fieldDisplayName = criteria.field;
+        if (criteria.field === 'all') {
+            fieldDisplayName = 'All Fields';
+        } {% for f in fields %} else if (criteria.field === '{{f.field}}') {
+            fieldDisplayName = '{% if f.display_name %}{{f.display_name}}{% else %}{{f.field | capitalize }}{% endif %}';
+        } {% endfor %} else {
+            // Capitalize first letter and replace underscores with spaces
+            fieldDisplayName = criteria.field.charAt(0).toUpperCase() + 
+                criteria.field.slice(1).replace(/_/g, ' ');
+        }
+        
+        // For single field filters (like facets), don't show the boolean operator
+        const showBoolean = searchCriteria.length > 1 && criteria.boolean !== 'AND';
+        
+        filterButton.innerHTML = `
+            <span class="me-1">${showBoolean ? criteria.boolean + ' ' : ''}${fieldDisplayName}: "${criteria.value}"</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+        `;
+        
+        // Add click handler to remove this filter
+        filterButton.addEventListener('click', function() {
+            // For hash-based searches (facets), handle differently
+            if (window.location.hash && !window.location.search) {
+                resetFilter();
+            } else {
+                removeActiveFilter(index);
+            }
+        });
+        
+        filtersContainer.appendChild(filterButton);
+    });
+    
+    // Add the "Add Field" button
+    const addFieldButton = document.createElement('button');
+    addFieldButton.type = 'button';
+    addFieldButton.className = 'btn btn-outline-secondary btn-sm mb-1';
+    addFieldButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+        </svg>
+        Add Field
+    `;
+    
+    // Add click handler to open advanced search modal
+    addFieldButton.addEventListener('click', function() {
+        const advancedSearchModal = document.getElementById('advancedSearchModal');
+        if (advancedSearchModal) {
+            new bootstrap.Modal(advancedSearchModal).show();
+        }
+    });
+    
+    filtersContainer.appendChild(addFieldButton);
+    activeFiltersDiv.appendChild(filtersContainer);
+}
+
+/**
+ * Remove a specific filter from active search criteria
+ * 
+ * @param {number} filterIndex - Index of the filter to remove
+ */
+function removeActiveFilter(filterIndex) {
+    // If we're in a hash-based search (facet), just reset completely
+    if (window.location.hash && !window.location.search) {
+        resetFilter();
+        return;
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchCriteria = [];
+    let index = 0;
+    
+    // Rebuild search criteria excluding the removed filter
+    while (urlParams.has(`f${index}`)) {
+        if (index !== filterIndex) {
+            searchCriteria.push({
+                boolean: urlParams.get(`b${index}`),
+                field: urlParams.get(`f${index}`),
+                value: urlParams.get(`v${index}`)
+            });
+        }
+        index++;
+    }
+    
+    // If no criteria left, reset completely
+    if (searchCriteria.length === 0) {
+        resetFilter();
+        return;
+    }
+    
+    // Rebuild URL with remaining criteria
+    const newParams = new URLSearchParams();
+    searchCriteria.forEach((criteria, newIndex) => {
+        newParams.set(`b${newIndex}`, criteria.boolean);
+        newParams.set(`f${newIndex}`, criteria.field);
+        newParams.set(`v${newIndex}`, criteria.value);
+    });
+    
+    // Preserve sort parameter if it exists
+    if (urlParams.has('sort')) {
+        newParams.set('sort', urlParams.get('sort'));
+    }
+    
+    // Update URL and apply new search
+    window.location = window.location.pathname + '?' + newParams.toString();
+}
 </script>
