@@ -886,11 +886,11 @@ function displayActiveFilters(searchCriteria) {
         const filterButton = document.createElement('button');
         
         // Set button color based on boolean operator
-        let buttonClass = 'btn btn-sm btn-success me-2 mb-1'; // Default for AND
+        let buttonClass = 'btn btn-sm btn-outline-success me-2 mb-1'; // Default for AND
         if (criteria.boolean === 'NOT') {
-            buttonClass = 'btn btn-sm btn-danger me-2 mb-1';
+            buttonClass = 'btn btn-sm btn-outline-danger me-2 mb-1';
         } else if (criteria.boolean === 'OR') {
-            buttonClass = 'btn btn-sm btn-warning me-2 mb-1';
+            buttonClass = 'btn btn-sm btn-outline-warning me-2 mb-1';
         }
         
         filterButton.className = buttonClass;
